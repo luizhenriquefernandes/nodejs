@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Módulos NODE</title>
+</head>
+<body>
+    <h1>Sistema de módulos do Node.js</h1>
+    <p>O Node.js possui um sistema de módulos embutido que permite a organização e reutilização de código de forma eficiente. Vamos criar um exemplo simples para entender como isso funciona.
+
+        Crie um novo arquivo chamado math.js e abra-o no seu editor de texto. Digite o seguinte código:
+        
+        
+                const sum = (a, b) => {
+          return a + b;
+        };
+        
+        const subtract = (a, b) => {
+          return a - b;
+        };
+        
+        module.exports = {
+          sum,
+          subtract
+        };
+        Aqui, estamos criando duas funções: sum para somar dois números e subtract para subtrair o segundo número do primeiro. Em seguida, usamos module.exports para tornar essas funções disponíveis para outros arquivos.
+        
+        Agora, crie um novo arquivo chamado app.js e abra-o. Digite o seguinte código:
+        
+                        const math = require('./math');
+        
+        console.log(math.sum(5, 3));
+        console.log(math.subtract(10, 7));
+        Aqui, usamos require para importar o módulo math que criamos anteriormente. Agora, podemos usar as funções sum e subtract desse módulo em nosso arquivo app.js.
+        
+        Salve ambos os arquivos e, em seguida, execute o seguinte comando no terminal:
+        
+                node app.js
+        Você verá os resultados das operações de soma e subtração impressos no console. Isso demonstra como podemos organizar nosso código em módulos reutilizáveis.
+        
+        Uso de pacotes npm
+        O npm (Node Package Manager) é um gerenciador de pacotes para o Node.js, que permite a instalação e gerenciamento de bibliotecas e ferramentas de terceiros em nossos projetos. Vamos instalar um pacote chamado moment como exemplo.
+        
+        Crie um novo arquivo chamado date.js e abra-o no editor de texto. Digite o seguinte código:
+        
+                
+        const moment = require('moment');
+        
+        const currentDate = moment().format('YYYY-MM-DD');
+        console.log('Data atual:', currentDate);
+        Aqui, estamos usando o pacote moment para obter a data atual formatada. Antes de executar o código, precisamos instalar o pacote moment.
+        
+        No terminal, navegue até o diretório do projeto e execute o seguinte comando:
+        
+        
+        npm install moment
+        Isso instalará o pacote moment e suas dependências no seu projeto.
+        
+        Agora, volte para o arquivo date.js e execute-o com o comando:
+        
+           
+        node date.js
+        Você verá a data atual formatada sendo exibida no console.
+        
+        Criação de um servidor web simples
+        Agora vamos criar um servidor web simples usando o Node.js. Crie um novo arquivo chamado server.js e abra-o no seu editor de texto. Digite o seguinte código:
+        
+                        const http = require('http');
+        
+        const server = http.createServer((req, res) => {
+          res.statusCode = 200;
+          res.setHeader('Content-Type', 'text/plain');</p>
+    
+</body>
+</html>
