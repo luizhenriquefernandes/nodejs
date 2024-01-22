@@ -1,0 +1,86 @@
+Explicação:
+
+O servidor utiliza o framework express para simplificar a criação de rotas e a manipulação de requisições.
+O módulo cors é utilizado para configurar o suporte a Cross-Origin Resource Sharing (CORS), permitindo que o servidor 
+aceite solicitações de origens diferentes da sua própria.
+A rota /api/mensagem responde a requisições GET com uma mensagem simples em formato JSON.
+O servidor é configurado para escutar na porta 4000.
+Angular (pergunta.component.ts):
+
+
+import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+
+@Component({
+  selector: 'app-pergunta',
+  templateUrl: './pergunta.component.html',
+  styleUrls: ['./pergunta.component.css']
+})
+export class PerguntaComponent implements OnInit {
+  mensagemDoBackEnd!: string;
+
+  constructor(private http: HttpClient) { }
+
+  ngOnInit(): void {
+    // Faz uma requisição GET para o servidor Node.js
+    this.http.get<any>('http://localhost:4000/api/mensagem').subscribe(data => {
+      // Atribui a mensagem recebida do servidor à propriedade mensagemDoBackEnd
+      this.mensagemDoBackEnd = data.mensagem;
+    });
+  }
+}
+Explicação:
+
+O componente Angular PerguntaComponent é definido para a aplicação.
+O construtor injeta o serviço HttpClient, que é usado para fazer requisições HTTP.
+No método ngOnInit, é feita uma requisição GET para o endpoint http://localhost:4000/api/mensagem.
+A resposta do servidor (a mensagem) é atribuída à propriedade mensagemDoBackEnd, que pode ser exibida no template HTML.
+Nodemon:
+O nodemon é uma ferramenta que monitora alterações nos arquivos do seu projeto Node.js e reinicia automaticamente o 
+servidor quando detecta uma mudança. Isso é extremamente útil durante o desenvolvimento, pois evita a necessidade de 
+reiniciar manualmente o servidor a cada alteração no código.
+
+Para rodar o servidor com nodemon, você executa o seguinte comando no terminal:
+
+prompt
+
+nodemon index.js
+Ele mostra informações sobre as alterações detectadas e reinicia automaticamente o servidor. Isso facilita o desenvolvimento, 
+pois você pode se concentrar no código sem se preocupar em reiniciar o servidor manualmente a cada alteração.
+
+Lembre-se de que, para ambientes de produção, você pode usar outras ferramentas como pm2 para gerenciar seu aplicativo de 
+forma mais robusta e oferecer recursos adicionais, como monitoramento.
+
+
+
+Vamos comentar minuciosamente a linha de código em questão:
+
+
+
+this.http.get<any>('http://localhost:4000/api/mensagem').subscribe(data => {
+  this.mensagemDoBackEnd = data.mensagem;
+});
+Explicação detalhada:
+
+this.http.get<any>('http://localhost:4000/api/mensagem'): Esta parte da linha faz uma requisição HTTP GET 
+para o endpoint http://localhost:4000/api/mensagem usando o serviço HttpClient. Vamos quebrar isso em partes menores:
+
+this.http: Referencia o serviço HttpClient que foi injetado no construtor do componente.
+.get<any>(...): Chama o método HTTP GET. O <any> é um tipo genérico que indica que a resposta da requisição pode 
+ter qualquer tipo de estrutura. Pode ser mais específico dependendo do formato esperado da resposta.
+'http://localhost:4000/api/mensagem': É o URL para o qual a requisição GET está sendo feita.
+.subscribe(data => { ... }): Esta parte trata a resposta da requisição. Vamos dividir isso também:
+
+.subscribe(...): Chama o método subscribe para observar a resposta da requisição. Este método é parte do padrão de 
+programação reativa usado no Angular.
+data => { ... }: É uma função de callback que será executada quando a resposta da requisição estiver disponível. O 
+nome data é uma convenção, mas poderia ser qualquer outro nome que você escolher.
+this.mensagemDoBackEnd = data.mensagem;: Nesta parte, a mensagem recebida do servidor é atribuída à propriedade mensagemDoBackEnd 
+do componente:
+
+this.mensagemDoBackEnd: É uma propriedade do componente que armazenará a mensagem recebida do servidor.
+data.mensagem: A propriedade mensagem contida no objeto data, que representa a resposta da requisição. Isso presume que a resposta 
+tem uma estrutura específica com uma propriedade mensagem.
+Em resumo, esta linha de código realiza uma requisição HTTP GET para o servidor, aguarda a resposta e, quando a resposta é recebida, 
+a mensagem é extraída dessa resposta e atribuída à propriedade mensagemDoBackEnd do componente Angular. Isso é feito dentro de um 
+bloco subscribe para lidar de maneira assíncrona com a resposta da requisição.
