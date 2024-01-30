@@ -1,0 +1,26 @@
+{
+  "name": "7arquivosestaticos",
+  "version": "1.0.0",
+  "description": "Fazendo arquivos estáticos",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/luizfernandes/node.git"
+  },
+  "author": "Luiz Fernandes",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/luizfernandes/node/issues"
+  },
+  "homepage": "https://github.com/luizfernandes/node#readme",
+  "dependencies": {
+    "corn": "^0.0.1",
+    "cors": "^2.8.5",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "nodemon": "^3.0.3"
+  }
+}

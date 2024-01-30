@@ -1,5 +1,5 @@
 {
-  "name": "6perguntas_e_respostas",
+  "name": "index.js",
   "version": "1.0.0",
   "description": "Criando um projeto de perguntas e respostas. Quiz",
   "main": "index.js",
@@ -17,5 +17,14 @@
     "cors": "^2.8.5",
     "express": "^4.18.2",
     "nodemon": "^3.0.3"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/luizhenriquefernandes/node.git"
+  },
+  "bugs": {
+    "url": "https://github.com/luizhenriquefernandes/node/issues"
+  },
+  "homepage": "https://github.com/luizhenriquefernandes/node#readme"
 }
